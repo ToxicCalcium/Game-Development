@@ -16,7 +16,7 @@ def position():
     alien.x = randint(50, WIDTH-50)
     alien.y = randint(50, HEIGHT-50)
 
-def mousedown(pos):
+def on_mouse_down(pos):
     global hitmsg
     if alien.collidepoint(pos):
         hitmsg = "You hit the alien"
