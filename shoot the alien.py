@@ -2,7 +2,7 @@ import pgzrun
 from random import randint
 TITLE = "Shoot The Alien"
 HEIGHT = 400
-WIDTH = 400
+WIDTH = 500
 hitmsg = ""
 
 alien = Actor('alien')
