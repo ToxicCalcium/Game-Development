@@ -32,4 +32,4 @@ def draw():
         screen.draw.line(Connectors[0], Connectors[1], (255, 255, 255))
     if NextSatellite < NumOfSatellites:
         Totaltime = time.time() - StartTime
-        screen.draw.text("You Win!", (0, 0))
+        screen.draw.text(str(TotalTime), (10, 10))
