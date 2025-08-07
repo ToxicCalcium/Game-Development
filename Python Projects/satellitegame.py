@@ -33,3 +33,24 @@ def draw():
     if NextSatellite < NumOfSatellites:
         Totaltime = time.time() - StartTime
         screen.draw.text(str(TotalTime), (10, 10))
+    else:
+        screen.draw.text(str(TotalTime), (10, 10))
+
+def update():
+    pass
+
+def mouseclick(pos):
+    global NextSatellite
+    global Connectors
+    if NextSatellite < NumOfSatellites: #Are there satellites left
+        if Satellite[NextSatellite].collidepoint(pos): #checks if the satellite is the correct one
+            if NextSatellite: # if not 1st satellite
+                Connectors.append((Satellite[NextSatellite-1].pos, Satellite[NextSatellite].pos))
+                NextSatellite = NextSatellite + 1
+        else:
+            Connectors = []
+            NextSatellite = 0
+
+
+CreateSatellites()
+pgzrun.go()
