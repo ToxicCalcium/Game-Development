@@ -8,6 +8,7 @@ gameover = False
 complete = False
 speed = 10
 score = 0
+
 animations = []
 fallitems = []
 nritems = ["plasticbag", "applecore", "battery", "computerchip"]
@@ -19,9 +20,30 @@ def draw():
     bg = pygame.transform.scale(bg,(WIDTH, HEIGHT))
     screen.blit(bg, (0, 0))
     if gameover == True:
-        print("game over")
+        screen.draw.text("Game Over", (WIDTH//2, HEIGHT//2))
     elif complete == True:
-        print("you win")
+        screen.draw.text("You Win", (WIDTH//2, HEIGHT//2))
     else:
         for i in nritems:
             i.draw()
+
+def update():
+    global nritems
+    if fallitems.len() == 0 and not gameover:
+        fallitems = makeitems()
+
+def makeitems():
+    itemstocreate = ["paper"]
+    for i in range(3):
+        itemstocreate.append(random.choice(nritems))
+    newfallitems = createitems(itemstocreate)
+    itemlayout(newfallitems)
+    itemanims(newfallitems)
+    return newfallitems
+
+def createitems(itemstocreate):
+    newfallitems = []
+    for i in itemstocreate:
+        fallitems = Actor(i)
+        newfallitems.append(fallitems)
+    return fallitems
